@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>BMI Calculator</title>
+  </head>
+  <body>
+    <div class="card">
+      <h1>BMI Calculator</h1>
+      <form>
+        <div class="input">
+          <label>Your weight</label>
+          <div class="form-input">
+            <input type="number" name="weight" value="0" />
+            <span>kg</span>
+          </div>
+        </div>
+        <div class="input">
+          <label>Your height</label>
+          <div class="form-input">
+            <input type="number" name="height" value="0" />
+            <span>cm</span>
+          </div>
+        </div>
+      </form>
+      <button type="submit" id="submit">Calculation</button>
+
+      <div id="warning" class="result"></div>
+      <div class="card-desc" id="card-desc">
+        <div class="bmi-result">
+          <h1 id="bmi"></h1>
+          <div class="content">
+            <p>Category: <span id="category"></span></p>
+          </div>
+        </div>
+        <div id="result" class="result"></div>
+        <div class="bmi-categories">
+          <h4>BMI Categories:</h4>
+          <p><span style="color: #0059ff">Underweight</span> = < 18.5</p>
+          <p><span style="color: #15c229">Normal weight</span> = 18.5 - 24.9</p>
+          <p><span style="color: #ebe72d">Overweight</span> = 25 - 29.9</p>
+          <p>
+            <span style="color: #f53131">Obesity</span> = BMI of 30 or greater
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
