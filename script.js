@@ -51,6 +51,7 @@ const handleSubmit = () => {
     let bmiColor = colorCategory(bmiCategory);
 
     return (
+      (warning.innerHTML = ""),
       (document.getElementById("card-desc").style.display = "block"),
       (document.getElementById("bmi").innerHTML = bmiResult),
       (document.getElementById("category").innerHTML = bmiCategory),
@@ -58,7 +59,10 @@ const handleSubmit = () => {
       (result.innerHTML = `Your BMI is ${bmiResult} which means. You are ${bmiCategory}`)
     );
   }
-  return (warning.innerHTML = "Isi data Anda!");
+  return (
+    (warning.innerHTML = "Isi data Anda!"),
+    (document.getElementById("card-desc").style.display = "none")
+  );
 };
 
 submit.addEventListener("click", (e) => {
