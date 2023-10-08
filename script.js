@@ -1,6 +1,4 @@
-let result = document.getElementById("result");
-let submit = document.getElementById("submit");
-
+// function get data input
 const handleGetData = () => {
   let weight = document.getElementsByName("weight")[0].value;
   let height = document.getElementsByName("height")[0].value;
@@ -8,17 +6,28 @@ const handleGetData = () => {
   return { weight, height };
 };
 
+// validation
 const validateData = (data) => {
-  if (data.weight != "" && data.height != "") return true;
+  if (
+    data.weight != "" &&
+    data.height != "" &&
+    data.weight != 0 &&
+    data.height != 0 &&
+    data.weight >= 0 &&
+    data.height >= 0
+  )
+    return true;
   return false;
 };
 
+// calculation result and change type data
 const calculationResult = (data) => {
   let value = (result.innerHTML = data.weight / (data.height / 100) ** 2);
   let roundedResult = value.toFixed(1);
   return parseFloat(roundedResult);
 };
 
+// validation BMI result
 const bmiCategories = (bmi) => {
   if (bmi < 18.5) {
     return "Underweight";
@@ -31,6 +40,7 @@ const bmiCategories = (bmi) => {
   }
 };
 
+// validation color category
 const colorCategory = (category) => {
   switch (category) {
     case "Underweight":
@@ -44,14 +54,16 @@ const colorCategory = (category) => {
   }
 };
 
+// function handle submit
 const handleSubmit = () => {
   if (validateData(handleGetData()) === true) {
+    let result = document.getElementById("result");
     let bmiResult = calculationResult(handleGetData());
     let bmiCategory = bmiCategories(calculationResult(handleGetData()));
     let bmiColor = colorCategory(bmiCategory);
 
     return (
-      (warning.innerHTML = ""),
+      (document.getElementById("warning").innerHTML = ""),
       (document.getElementById("card-desc").style.display = "block"),
       (document.getElementById("bmi").innerHTML = bmiResult),
       (document.getElementById("category").innerHTML = bmiCategory),
@@ -60,12 +72,31 @@ const handleSubmit = () => {
     );
   }
   return (
-    (warning.innerHTML = "Isi data Anda!"),
+    (document.getElementById("warning").innerHTML = "Isi data dengan benar!"),
     (document.getElementById("card-desc").style.display = "none")
   );
 };
 
+// function handle reset
+const handleReset = () => {
+  let weight = document.getElementsByName("weight")[0];
+  let height = document.getElementsByName("height")[0];
+
+  return (
+    (weight.value = ""),
+    (height.value = ""),
+    (document.getElementById("card-desc").style.display = "none")
+  );
+};
+
+let submit = document.getElementById("submit");
 submit.addEventListener("click", (e) => {
   e.preventDefault();
   handleSubmit();
+});
+
+let reset = document.getElementById("reset");
+reset.addEventListener("click", (e) => {
+  e.preventDefault();
+  handleReset();
 });

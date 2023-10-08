@@ -9,24 +9,30 @@
   <body>
     <div class="card">
       <h1>BMI Calculator</h1>
+
+      <!-- form input -->
       <form>
         <div class="input">
           <label>Your weight</label>
           <div class="form-input">
-            <input type="number" name="weight" placeholder="0" />
+            <input type="number" name="weight" min="0" placeholder="0" />
             <span>kg</span>
           </div>
         </div>
         <div class="input">
           <label>Your height</label>
           <div class="form-input">
-            <input type="number" name="height" placeholder="0" />
+            <input type="number" name="height" min="0" placeholder="0" />
             <span>cm</span>
           </div>
         </div>
       </form>
-      <button type="submit" id="submit">Calculation</button>
 
+      <!-- button handle -->
+      <button type="submit" id="submit" class="submit">Calculation</button>
+      <button type="submit" id="reset" class="reset">Reset</button>
+
+      <!-- result -->
       <div id="warning" class="result"></div>
       <div class="card-desc" id="card-desc">
         <div class="bmi-result">
